@@ -55,7 +55,7 @@ let cards = document.getElementsByClassName('col-md-4');
 let buttons = document.getElementsByClassName('btn-success');
 
 for(let i = 0; i<cards.length;i++){
-	buttons.addEventListener('mouseover', function() {
+	buttons[i].addEventListener('mouseover', function() {
       if (cards[i].getElementsByClassName('card-img-top')[0].style.width === "20%") {
         cards[i].getElementsByClassName('card-img-top')[0].style.width = "100%";
         cards[i].getElementsByClassName('card-text')[0].style.display = "block";
@@ -68,43 +68,37 @@ for(let i = 0; i<cards.length;i++){
 }
 
 //Fonctionnalité 7
-
-let parentCards = document.getElementsByClassName('col-md-4');
-let row = document.getElementsByClassName('row');
-let greyButton = document.getElementsByClassName('btn-secondary');
+  let row = document.getElementsByClassName('row')[1];
+  let greyButton = document.getElementsByClassName('btn-secondary')[0];
 
   greyButton.addEventListener('click', function(e) {
     e.preventDefault();
-    row.insertBefore(parentCards, parentCards[0]);
+    row.insertBefore(row.lastChild, row.childNodes[0]);
   });
 
   //Fonctionnalité 8
 
 
-  let parentCards = document.getElementsByClassName('col-md-4');
-  let blueButton = document.getElementsByClassName('btn-primary');
-  let row = document.getElementsByClassName('row');
-  let status = false;
+  let blueButton = document.getElementsByClassName('btn-primary')[0];
+  let parent = document.getElementsByClassName('row')[1];
+  // let lastCard = document.getElementsByClassName("col-md-4")[5];
+  
+ 
 
   blueButton.addEventListener('click', function(e) {
-    if(status === false){
-       e.preventDefault();
-      row.appendChild(parentCards[0]);
-      status = true;
-    }else{
-       e.preventDefault();
-      row.appendChild(parentCards[0]);
-      status = false;
-    }
+      e.preventDefault();
+      parent.insertBefore(parent.firstChild, parent.childNodes[5].nextSibling);
    
   });
+
+
 
 
 //     La fonctionnalité se déclenchera si le logo de la page (JS & Events) est sélectionné et qu'on appuie sur une touche spécifique du clavier.
 //     Si l'utilisateur presse la touche "a", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap à gauche de l'écran.
 //     Si l'utilisateur presse la touche "y", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap au milieu de l'écran.
 //     Si l'utilisateur presse la touche "p", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap à droite de l'écran.
-//     Si l'utilisateur presse la touche "b", tout redevient normal.
+// //     Si l'utilisateur presse la touche "b", tout redevient normal.
   let logo = document.getElementsByClassName('navbar-brand')[0];
   let body = document.getElementsByTagName('body')[0];
 
